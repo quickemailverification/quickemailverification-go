@@ -29,12 +29,12 @@ func CreateClient(apiKey string) *Client {
 
 // Verify the given email address by using QuickEmailVerification REST API
 func (c Client) Verify(address string) (*Response, error) {
-	return c.getAPIResponse(BuildResponseModel{}, c.url(address))
+	return c.getAPIResponse(BuildResponseModel{}, fmt.Sprintf(BaseURL+"?email=%s&apikey=%s", url.QueryEscape(address), url.QueryEscape(c.apiKey)))
 }
 
-// Create the API endpoint by given the email address and API key
-func (c Client) url(address string) string {
-	return fmt.Sprintf(BaseURL+"?email=%s&apikey=%s", url.QueryEscape(address), url.QueryEscape(c.apiKey))
+// Return predefined response for predefined email address using QuickEmailVerification Sandbox mode
+func (c Client) Sandbox(address string) (*Response, error) {
+	return c.getAPIResponse(BuildResponseModel{}, fmt.Sprintf(BaseURL+"/sandbox?email=%s&apikey=%s", url.QueryEscape(address), url.QueryEscape(c.apiKey)))
 }
 
 // Send the API request and read the response of the API request, returning a new Response struct
@@ -46,11 +46,11 @@ func (c Client) getAPIResponse(rm ResponseModel, url string) (*Response, error) 
 	}
 	defer response.Body.Close()
 
-	// If HTTP StatusCode not equal to 200 then return HTTP Status Code with error message
-	if response.StatusCode != 200 {
-		msg := fmt.Sprintf("API returned HTTP Status Code : %d", response.StatusCode)
-		return nil, errors.New(msg)
-	}
+    	arrStatusCode := []int{200, 400, 401, 402, 403, 404, 429}
+	if(in_array(response.StatusCode, arrStatusCode) ==-1) {
+      	 msg := fmt.Sprintf("API returned HTTP Status Code : %d", response.StatusCode)
+		    return nil, errors.New(msg)
+    	}
 
 	// Read the response
 	body, err := ioutil.ReadAll(response.Body)
@@ -65,4 +65,13 @@ func (c Client) getAPIResponse(rm ResponseModel, url string) (*Response, error) 
 	}
 
 	return result, nil
+}
+
+func in_array(element int, data []int) (int) {
+   for k, v := range data {
+       if element == v {
+           return k
+       }
+   }
+   return -1
 }

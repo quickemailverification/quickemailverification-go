@@ -44,8 +44,13 @@ import "github.com/quickemailverification/quickemailverification-go"
 // Create a client with your API key
 qev := quickemailverification.CreateClient("YOUR_API_KEY")
 
+// PRODUCTION MODE
 // Verify an email address
 response, err := qev.Verify("test@example.com")
+
+// SANDBOX MODE
+// response, err := qev.Sandbox("valid@example.com")
+
 if err != nil {
 	panic(err)
 }
@@ -100,6 +105,11 @@ QuickEmailVerification API also returns following HTTP status codes to indicate 
 - `402` - You are running out of your credit limit.
 - `404` - Requested API can not be found on server.
 - `429` - Too many requests. Rate limit exceeded.
+
+## Sandbox Mode
+QuickEmailVerification single email verification API sandbox mode helps developers to test their integration against simulated results. Requesting against sandbox endpoint is totally free and no credits will be deducted from actual credit quota.
+
+Please refer our [knowledge base](http://docs.quickemailverification.com/email-verification-api/sandbox-mode) to learn more about sandbox mode.
 
 ## License
 MIT
