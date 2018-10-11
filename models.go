@@ -11,6 +11,8 @@ type Response struct {
 	Email      string  `json:"email"`
 	User       string  `json:"user"`
 	Domain     string  `json:"domain"`
+	MxRecord   string  `json:"mx_record"`
+	MxDomain   string  `json:"mx_domain"`
 	SafeToSend string  `json:"safe_to_send"`
 	Suggested  string  `json:"did_you_mean"`
 	Success    string  `json:"success"`
