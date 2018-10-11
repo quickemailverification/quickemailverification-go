@@ -84,6 +84,8 @@ A successful API call responds with the following values:
 - **email** `string` - Returns a normalized version. (`Niki@example.com` -> `niki@example.com`)
 - **user** `string` - The local part of an email address. (`niki@example.com` -> `niki`)
 - **domain** `string` - The domain of the provided email address. (`niki@example.com` -> `example.com`)
+- **mx_record** `string` - The preferred MX record of email domain. This field contains empty string when MX record is not available.
+- **mx_domain** `string` - The domain name of the MX host. This field contains empty string when MX record is not available.
 - **safe_to_send** `true | false` - *true* if the email address is safe for deliverability
 - **did_you_mean** `string` - Returns email suggestions if specific typo errors found in email
 - **success** `true | false` - *true* if the API request was successful
