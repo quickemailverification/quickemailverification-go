@@ -6,6 +6,8 @@
 
 # Official Email Validation API library client for Go
 
+[![Travis CI](https://travis-ci.org/quickemailverification/quickemailverification-go.svg?branch=master)](https://travis-ci.org/quickemailverification/quickemailverification-go)
+
 QuickEmailVerification provides the quickest way to avoid fake / invalid emails.
 
 * Get actual users by scanning email address.
