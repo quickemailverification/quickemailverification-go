@@ -1,0 +1,10 @@
+language: go
+go:
+- 1.9.x
+- 1.10.x
+- 1.11.x
+script:
+- go test -v ./...
+env:
+  global:
+    secure: T+MqOQVyN8mso/Vkc9pxKxnAeImWLHsy0iBVZOOqv5iUK8PR5+GY0WgldPwJ+jtio8gRGP2JchEneTLeQCWv+xu+KxGz9y0yfSWhuZlnNfIPlqAxdF9oOXsfx4eJA+fsFpJoIYwMNlPpBSXbmrSBlqGD0lTNCDoAX+OUnrUkasq+9lzJ8wPP+DhF+XmTCBAsg19CKyCP6A0pvddpMDRv/S6KJCx5rIQMGKQkYS0RlT0gPEbSNReFwJolZ6/l5m5CtaJ7lfe2yHc436rJRwKpBFV3aTGS5QsDE+WOkbCuyyYpvMiGqUYyzYvXvBgA1vVWQYo2sOJlJV0PpeXlQzVehBXAYPhVjOdgori8wR14Wl4VsRc/IFXheVswdnCNNKmMCnoc4VGIwVJyV9P69iTU67jeI/pATbf8+0t+c8QL43HjFGmVBQeNXVs8bihVAWfmeThUx+TzEoOav6HyKZ7aqM166gs501bT4Metabk6mMd5jhpJ2sxwkCe82C/S+SGn49oTsXVdlxvgrDvVOCIhe1AIWATgYVEQGoWLSlOiFXthlHQx337VpG2XsRJAz/tvQzsPZRujwBnJGmS+fKPi9qXeI+ltVdVUsWK/5lWaHXUW+TxQjMOLSiQxyVan/uQitjWttYUnuqZN7OS1BiGK3TogYuuF+iVwQQhivNIZnDA=
